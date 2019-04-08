@@ -1,0 +1,164 @@
+<html lang = "en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style> body {padding: 0; margin: 0;} </style>
+    <script src="p5/p5.js"></script>
+    <script src="p5/addons/p5.dom.min.js"></script>
+    <script src="p5/addons/p5.sound.min.js"></script>
+    <!-- <script src="LoginScreenBackground.js"></script> -->
+    <link rel="stylesheet" href="Schedule_Style.css">
+  <title>ProjectSchedulerHTML</title>
+  <meta charset = "UTF-8" /
+</head>
+
+<div class="container">
+<div class="split left">
+
+<script src="https://apis.google.com/js/api.js"></script>
+<script>
+function start() {
+  // 2. Initialize the JavaScript client library.
+  gapi.client.init({
+    'apiKey': 'sfq6wRp5r36_yREKCUIwd7-_',
+    // Your API key will be automatically added to the Discovery Document URLs.
+    'discoveryDocs': ['https://people.googleapis.com/$discovery/rest'],
+    // clientId and scope are optional if auth is not required.
+    'clientId': '198865806308-frbhjtt9tkosupeltatnu3g6g1ah5dfo.apps.googleusercontent.com',
+    'scope': 'profile',
+  }).then(function() {
+    // 3. Initialize and make the API request.
+    return gapi.client.people.people.get({
+      'resourceName': 'people/me',
+      'requestMask.includeField': 'person.names'
+    });
+  }).then(function(response) {
+    console.log(response.result);
+  }, function(reason) {
+    console.log('Error: ' + reason.result.error.message);
+  });
+};
+// 1. Load the JavaScript client library.
+gapi.load('client', start);
+
+var fetch = require("node-fetch"); // or fetch() is native in browsers
+fetch("https://www.googleapis.com/calendar/v3/users/me/settings", {
+  method: "get",
+  headers: {
+    Authorization: "Bearer ACCESS_TOKEN"
+  }
+})
+  .then(res => res.json())
+  .then(json => console.log(json));
+</script>
+
+<body>
+  <h1>Project Scheduler</h1>
+      <div id="Container">
+
+      <!-- Header -->
+      <div id="Header">
+
+        <div class="logo">
+          <img class="logo-img" src="Resources/Icons/diamond.png" alt="">
+          <div class="title">Co-Lab</div>
+        </div>
+        
+        <div class="header-right">
+
+          <div class="project-title">
+            Project Title
+          </div>
+
+          <div class="dropdown">
+            <button class="dropbtn">
+              <img class="login-img" src="Resources/Icons/user-3.png" alt="">
+            </button>
+            <div class="dropdown-content">
+
+            </div>
+          </div>
+
+          <a class="help"><img class="help-img" src="Resources/Icons/info.png" alt=""></a>
+
+          <div class="dropdown">
+            <button class="dropbtn">
+              <img class="add-project-img" src="Resources/Icons/plus.png" alt="">
+            </button>
+            <div class="dropdown-content">
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Body -->
+      <div id="Body">
+        
+        <div class="side-panel">
+
+          <div class="selection">
+
+            <div class="projects">
+              <div class="project">
+                <img class="projects-img" src="Resources/Icons/calendar-6.png" alt="">
+                Project
+              </div>
+              <div class="project">
+                <img class="projects-img" src="Resources/Icons/calendar-6.png" alt="">
+                Project
+              </div>
+              <div class="project">
+                <img class="projects-img" src="Resources/Icons/calendar-6.png" alt="">
+                Project
+              </div>
+            </div>
+
+            <div class="chatrooms">
+              <div class="chatroom">
+                <img class="chatrooms-img" src="Resources/Icons/smartphone-10.png" alt="">
+                Chatroom
+              </div>
+              <div class="chatroom">
+                <img class="chatrooms-img" src="Resources/Icons/smartphone-10.png" alt="">
+                Chatroom
+              </div>
+              <div class="chatroom">
+                <img class="chatrooms-img" src="Resources/Icons/smartphone-10.png" alt="">
+                Chatroom
+              </div>
+            </div>
+
+            <div class="button-box">
+              <button class="projects-button">
+                  <img class="projects-img" src="Resources/Icons/calendar-6.png" alt="">
+              </button>
+              <button class="chatrooms-button">
+                  <img class="chatrooms-img" src="Resources/Icons/smartphone-10.png" alt="">
+              </button>
+            </div>
+          
+          </div>
+
+          <div class="collapse">
+            <div class="collapse-icon">
+
+            </div>
+            <button class="collapse-button">
+                <img class="collapse-img" src="Resources/Icons/play-button-1.png" alt="">
+            </button>
+          </div>
+        </div>
+
+        <div class="calendar">
+          Something
+        </div>
+
+        <div class="chatroom">
+          Something
+        </div>
+  <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=tmargolis%40ltu.edu&amp;color=%231B887A&amp;ctz=America%2FNew_York" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+</body>
+
+</html>

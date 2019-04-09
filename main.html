@@ -61,42 +61,56 @@
           <div class="selection">
 
             <div class="projects">
-              <div class="project">
+              <div class="project-obj">
                 <img class="projects-img" src="Resources/Icons/calendar-6.png" alt="">
                 Project
               </div>
-              <div class="project">
+              <div class="project-obj">
                 <img class="projects-img" src="Resources/Icons/calendar-6.png" alt="">
                 Project
               </div>
-              <div class="project">
+              <div class="project-obj">
                 <img class="projects-img" src="Resources/Icons/calendar-6.png" alt="">
                 Project
               </div>
             </div>
 
             <div class="chatrooms">
-              <div class="chatroom">
+              <div class="chatroom-obj">
                 <img class="chatrooms-img" src="Resources/Icons/smartphone-10.png" alt="">
                 Chatroom
               </div>
-              <div class="chatroom">
+              <div class="chatroom-obj">
                 <img class="chatrooms-img" src="Resources/Icons/smartphone-10.png" alt="">
                 Chatroom
               </div>
-              <div class="chatroom">
+              <div class="chatroom-obj">
                 <img class="chatrooms-img" src="Resources/Icons/smartphone-10.png" alt="">
                 Chatroom
               </div>
             </div>
 
             <div class="button-box">
-              <button class="projects-button">
+              <button class="projects-button" onclick="projectsVis()">
                   <img class="projects-img" src="Resources/Icons/calendar-6.png" alt="">
               </button>
-              <button class="chatrooms-button">
+              <button class="chatrooms-button" onclick="chatroomsVis()">
                   <img class="chatrooms-img" src="Resources/Icons/smartphone-10.png" alt="">
               </button>
+              <script>
+                function projectsVis() {
+                  var x = document.getElementsByClassName("projects");
+                  x[0].style.display = "block";
+                  var y = document.getElementsByClassName("chatrooms");
+                  y[0].style.display = "none";
+                }
+                function chatroomsVis() {
+                  var x = document.getElementsByClassName("projects");
+                  x[0].style.display = "none";
+                  var y = document.getElementsByClassName("chatrooms");
+                  y[0].style.display = "block";
+                }
+              </script>
             </div>
           
           </div>
@@ -105,20 +119,60 @@
             <div class="collapse-icon">
 
             </div>
-            <button class="collapse-button">
+            <button class="collapse-button" onclick="selectionVis()">
                 <img class="collapse-img" src="Resources/Icons/play-button-1.png" alt="">
             </button>
+            <script>
+              function selectionVis() {
+                var x = document.getElementsByClassName("side-panel");
+                var y = document.getElementsByClassName("content");
+                if (x[0].style.right === "0px" || x[0].style.right === "") {
+                  x[0].style.right = "200px";
+                  // y[0].style.width = "75%";
+                } else {
+                  x[0].style.right = "0px"; 
+                  // y[0].style.width = "calc(100% - 250px)";
+                }
+              }
+            </script>
           </div>
         </div>
 
-        <div class="calendar">
-          Something
-        </div>
+        <div class="content"> 
 
-        <div class="chatroom">
-          Something
-        </div>
+          <div class="active-project">
 
+            <div class="project-content">
+              Something
+            </div> 
+
+            <div class="project-collapse">
+                <div class="collapse-icon">
+    
+                </div>
+                <button class="collapse-button">
+                    <img class="collapse-img" src="Resources/Icons/play-button-1.png" alt="">
+                </button>
+              </div>
+          </div>
+
+          <div class="active-chatroom">
+
+            <div class="chatroom-content">
+              Something
+            </div>
+
+            <div class="chatroom-collapse">
+                <div class="collapse-icon">
+    
+                </div>
+                <button class="collapse-button">
+                    <img class="collapse-img" src="Resources/Icons/play-button-1.png" alt="">
+                </button>
+              </div>
+          </div>
+
+        </div>
       </div>
 
       <!-- Footer -->

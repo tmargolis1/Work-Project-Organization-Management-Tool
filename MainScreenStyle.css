@@ -28,7 +28,6 @@ body {
     border-bottom: 2px solid black;
   }
 
-  /* Style the header links */
   #Header a {
     float: right;
     color: white;
@@ -38,7 +37,6 @@ body {
     font-size: 18px;
   }
 
-  /* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
   #Header .logo {
     float: left;
     height: 100%; 
@@ -63,7 +61,6 @@ body {
     height: 40px;
   }
 
-  /* Float the link section to the right */
   #Header .header-right {
       float: right;
       width: 50%;
@@ -78,20 +75,17 @@ body {
       width: 50%;
     }
 
-    /* Change the background color on mouse-over */
     #Header .header-right a:hover {
       background-color: #ddd;
       color: black;
     }
 
-    /* The dropdown container */
     #Header .header-right .dropdown {
       float: right;
       overflow: hidden;
       height: 100%;
     }
 
-    /* Dropdown button */
     #Header .header-right .dropdown .dropbtn {
       height: 100%;
       margin: 0px;
@@ -102,12 +96,10 @@ body {
       background-color: inherit;
     }
 
-    /* Add a red background color to navbar links on hover */
     #Header .header-right .dropdown:hover .dropbtn {
       background-color: #ddd;
     }
 
-    /* Dropdown content (hidden by default) */
     #Header .header-right .dropdown-content {
         width: 25%;
         left: 75%;
@@ -170,7 +162,8 @@ body {
 
 /* Body */
 #Body {
-    height: calc(80% - 4px);
+    height: calc(90% - 52px);
+    position: relative;
   }
 
   img {
@@ -179,82 +172,186 @@ body {
     height: 30px;
   }
 
-  .projects div {
-    
-  }
-
-  .chatrooms div {
-
-  }
-
   .side-panel {
-    height: 100%;
-    width: calc(250px - 4px); /* Set the width of the sidebar */
-    float: left;
-    z-index: 1; /* Stay on top */
-    background: #055169;
-    overflow-x: hidden; /* Disable horizontal scroll */
-    border-right: 4px solid black;
-  }
+      height: 100%;
+      width: calc(250px - 4px); /* Set the width of the sidebar */
+      float: left;
+      z-index: 1; /* Stay on top */
+      background: #055169;
+      overflow: hidden; /* Disable horizontal scroll */
+      border-right: 4px solid black;
+      position: relative;
+      -webkit-transition: all 0.5s ease;
+      -moz-transition: all 0.5s ease;
+      -o-transition: all 0.5s ease;
+      -ms-transition: all 0.5s ease;
+      transition: all 0.5s ease;
+    }
 
-  .selection {
-    float: left;
-    height: 100%;
-    width: 80%;
-    position: relative;
-  }
+    .selection {
+      float: left;
+      height: 100%;
+      width: 80%;
+      position: relative;
+    }
 
-  .selection .button-box {
-    width: 100%;
-    background: #055169;
-    position: absolute;
-    bottom: 0px;
-  }
+    .projects {
+      display: block;
+      height: calc(88% - 4px);
+    }
 
-  .selection .button-box img {
-    padding: 2px;
-    width: 35px;
-    height: 35px;
-  }
+    .projects div {
+      margin: auto;
+      padding: 5px;
+    }
 
-  .selection .button-box button {
-    float: left;
-    color: black;
-    border: none;
-    cursor: pointer;
-    width: 50%;
-    background: #055169;
-  }
+    .chatrooms {
+      display: none;
+      height: calc(88% - 4px);
+    }
+    
+    .chatrooms div {
+      margin: auto;
+      padding: 5px;
+    }
 
-  .selection .button-box button:hover {
-    background-color: #ddd;
-    color: black;
-  }
+    .selection .button-box {
+      overflow-y: hidden;
+      height: 45px;
+      width: 100%;
+      background: #055169;
+      position: absolute;
+      bottom: 0px;
+      border-top: 4px solid black;
+    }
 
-  .collapse {
-    float: right;
-    height: 100%;
-    position: relative;
-    width: calc(20% - 4px);
-    border-left: 4px solid black;
-    background-color: #373737;
-  }
+    .selection .button-box img {
+      padding: 2px;
+      width: 35px;
+      height: 35px;
+    }
 
-  .collapse button {
-    position: absolute;
-    bottom: 0;
-    float: left;
-    color: black;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    background: #373737;
-  }
+    .selection .button-box button {
+      float: left;
+      color: black;
+      border: none;
+      cursor: pointer;
+      width: 50%;
+      background: #373737;
+    }
 
-  .collapse button:hover {
-    background-color: #ddd;
-    color: black;
-  }
+    .selection .button-box button:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .projects-button:hover > .projects{
+      display: block;
+    }
+
+    .collapse {
+      float: left;
+      height: 100%;
+      position: relative;
+      width: calc(20% - 4px);
+      border-left: 4px solid black;
+      background-color: #373737;
+    }
+
+    .collapse button {
+      position: absolute;
+      bottom: 0;
+      float: left;
+      color: black;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      background: #373737;
+    }
+
+    .collapse button:hover {
+      background-color: #ddd;
+      color: black;
+    }
+  
+  .content {
+      height: 100%;
+      right: 0px;
+      overflow: hidden;
+      width: calc(100% - 250px);
+      -webkit-transition: all 0.5s ease;
+      -moz-transition: all 0.5s ease;
+      -o-transition: all 0.5s ease;
+      -ms-transition: all 0.5s ease;
+      transition: all 0.5s ease;
+    }
+
+    .content-collapse {
+      float: right;
+      height: 100%;
+      position: relative;
+      width: calc(20% - 4px - 4px);
+      border-left: 4px solid black;
+      border-right: 4px solid black;
+      background-color: #373737;
+    }
+
+    .content-collapse button {
+      position: absolute;
+      bottom: 0;
+      color: black;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      background: #373737;
+    }
+
+    .content-collapse button:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .active-project {
+        height: 100%;
+        width: 50%;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        -ms-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+        float: left;
+        background-color: #1297B8;
+      }
+
+      .project-content {
+        float: left;
+      }
+
+      .project-collapse {
+        float: right;
+        width: 50px;
+      }
+
+    .active-chatroom {
+        height: 100%;
+        width: 50%;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        -ms-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+        float: left;
+        background-color: #1297B8;
+      }
+
+      .chatroom-content {
+        float: left;
+        width: 50px;
+      }
+
+      .chatroom-collapse {
+        float: right;
+      }
 
 /* Footer */
 #Footer {

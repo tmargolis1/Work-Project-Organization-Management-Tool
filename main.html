@@ -127,11 +127,17 @@
                 var x = document.getElementsByClassName("side-panel");
                 var y = document.getElementsByClassName("content");
                 if (x[0].style.right === "0px" || x[0].style.right === "") {
+                  y[0].style.position = "absolute";
+                  y[0].style.width = "calc(100% - 50px)";
+                  y[0].style.left = "50px";
+                  y[0].style.right = "0px";
                   x[0].style.right = "200px";
-                  // y[0].style.width = "75%";
                 } else {
+                  y[0].style.position = "absolute";
+                  y[0].style.width = "calc(100% - 250px)";
+                  y[0].style.left = "250px";
+                  y[0].style.right = "0px";
                   x[0].style.right = "0px"; 
-                  // y[0].style.width = "calc(100% - 250px)";
                 }
               }
             </script>
@@ -143,32 +149,64 @@
           <div class="active-project">
 
             <div class="project-content">
-              Something
+              Project
             </div> 
 
-            <div class="project-collapse">
+            <div class="content-collapse">
                 <div class="collapse-icon">
-    
+                    <img class="projects-img" src="Resources/Icons/calendar-6.png" alt="">
                 </div>
-                <button class="collapse-button">
+                <button class="collapse-button" onclick="activeProjectVis()">
                     <img class="collapse-img" src="Resources/Icons/play-button-1.png" alt="">
                 </button>
+                <script>
+                    function activeProjectVis() {
+                      var x = document.getElementsByClassName("active-project");
+                      var x1 = document.getElementsByClassName("project-content");
+                      var y = document.getElementsByClassName("active-chatroom");
+                      if (x[0].style.width === "50%" || x[0].style.width === "") {
+                        x[0].style.width = "50px";
+                        x1[0].style.width = "0px";
+                        y[0].style.width = "calc(100% - 50px)";
+                      } else {
+                        x[0].style.width = "50%";
+                        x1[0].style.width = "auto";
+                        y[0].style.width = "50%";
+                      }
+                    }
+                  </script>
               </div>
           </div>
 
           <div class="active-chatroom">
 
             <div class="chatroom-content">
-              Something
+              Chatroom
             </div>
 
-            <div class="chatroom-collapse">
+            <div class="content-collapse">
                 <div class="collapse-icon">
-    
+                    <img class="chatrooms-img" src="Resources/Icons/smartphone-10.png" alt="">
                 </div>
-                <button class="collapse-button">
+                <button class="collapse-button" onclick="activeChatroomVis()">
                     <img class="collapse-img" src="Resources/Icons/play-button-1.png" alt="">
                 </button>
+                <script>
+                    function activeChatroomVis() {
+                      var x = document.getElementsByClassName("active-chatroom");
+                      var x1 = document.getElementsByClassName("chatroom-content");
+                      var y = document.getElementsByClassName("active-project");
+                      if (x[0].style.width === "50%" || x[0].style.width === "") {
+                        x[0].style.width = "50px";
+                        x1[0].style.width = "0px";
+                        y[0].style.width = "calc(100% - 50px)";
+                      } else {
+                        x[0].style.width = "50%";
+                        x1[0].style.width = "auto";
+                        y[0].style.width = "50%";
+                      }
+                    }
+                  </script>
               </div>
           </div>
 

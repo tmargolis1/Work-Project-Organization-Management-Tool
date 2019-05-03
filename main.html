@@ -35,20 +35,44 @@
               <img class="login-img" src="Resources/Icons/user-3.png" alt="">
             </button>
             <div class="dropdown-content">
-
+              <label for="username"><b>Username</b></label>
+              <button class="logout-button" onclick="location.href='index.html'">Logout</button>
             </div>
           </div>
-
-          <a class="help"><img class="help-img" src="Resources/Icons/info.png" alt=""></a>
 
           <div class="dropdown">
             <button class="dropbtn">
               <img class="add-project-img" src="Resources/Icons/plus.png" alt="">
             </button>
             <div class="dropdown-content">
+                <form action="/action_page.php" class="form-container">
+              
+                  <label for="project"><b>Project</b></label>
+                  <input type="text" placeholder="Enter Project" name="project" required>
+              
+                  <select>
+                      <option value="add">Add</option>
+                      <option value="delete">Delete</option>
+                  </select>
 
+                  <button type="submit">Submit</button>
+                </form>
+                <form action="/action_page.php" class="form-container">
+              
+                  <label for="chatroom"><b>Chatroom</b></label>
+                  <input type="text" placeholder="Enter Chatroom" name="chatroom" required>
+              
+                  <select>
+                      <option value="add">Add</option>
+                      <option value="delete">Delete</option>
+                  </select>
+
+                  <button type="submit">Submit</button>
+                </form>
             </div>
           </div>
+
+          <a class="help"><img class="help-img" src="Resources/Icons/info.png" alt=""></a>
 
         </div>
       </div>

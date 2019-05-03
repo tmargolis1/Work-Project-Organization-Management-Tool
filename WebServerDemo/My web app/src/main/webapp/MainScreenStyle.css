@@ -5,6 +5,7 @@ body {
     height:100%;
     overflow-x: hidden;
     overflow-y: hidden;
+    background-color: #1297B8;
   }
 
 #defaultCanvas0 {
@@ -39,7 +40,7 @@ body {
 
   #Header .logo {
     float: left;
-    height: 100%; 
+    height: 100%;
     width: 25%;
   }
 
@@ -62,7 +63,6 @@ body {
   }
 
   #Header .header-right {
-      overflow: hidden;
       float: right;
       width: 50%;
       height: 100%;
@@ -114,15 +114,8 @@ body {
         border-left: 4px solid black;
       }
 
-      /* Bordered form */
-      #Header .header-right .dropdown-content .login-form {
-        margin: auto;
-        width: 90%;
-        color: white;
-      }
-
       /* Full-width inputs */
-      #Header .header-right .dropdown-content .login-form input[type=text], input[type=password] {
+      #Header .header-right .dropdown-content input[type=text], input[type=password] {
         width: 100%;
         display: inline-block;
         border: 1px solid white;
@@ -130,16 +123,34 @@ body {
       }
 
       /* Set a style for all buttons */
-      #Header .header-right .dropdown-content .login-form button {
+      #Header .header-right .dropdown-content button {
         background: white;
         color: black;
+        display: inline-block;
         border: none;
         cursor: pointer;
+        width: 48%;
+      }
+
+      /* Set a style for all buttons */
+      #Header .header-right .dropdown-content label {
         width: 100%;
+        color: white;
+        display: inline-block;
+      }
+
+      /* Set a style for all buttons */
+      #Header .header-right .dropdown-content select {
+        background: white;
+        color: black;
+        display: inline-block;
+        border: none;
+        cursor: pointer;
+        width: 48%;
       }
 
       /* Add a hover effect for buttons */
-      #Header .header-right .dropdown-content .login-form button:hover {
+      #Header .header-right .dropdown-content button:hover {
         opacity: 0.8;
       }
 

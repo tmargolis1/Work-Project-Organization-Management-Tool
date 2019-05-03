@@ -35,20 +35,46 @@
               <img class="login-img" src="Icons/user-3.png" alt="">
             </button>
             <div class="dropdown-content">
-
+              <label for="username"><b>Username</b></label>
+              <button class="logout-button" onclick="location.href='index.jsp'">Logout</button>
             </div>
           </div>
-
-          <a class="help"><img class="help-img" src="Icons/info.png" alt=""></a>
 
           <div class="dropdown">
             <button class="dropbtn">
               <img class="add-project-img" src="Icons/plus.png" alt="">
             </button>
             <div class="dropdown-content">
+                <form action="project" name="ProjectBuilder">
 
+                  <label for="project"><b>Project</b></label>
+                  <input type="text" placeholder="Enter Project" name="project" autocomplete="off" maxlength="20" required>
+
+                  <select name="option">
+                      <option value="add">Add</option>
+                      <option value="delete">Delete</option>
+                  </select>
+
+                  <input type="hidden" name="name" value=<%= request.getParameter("name")%>>
+                  <button type="submit">Submit</button>
+                </form>
+                <form action="chatroom" name="ChatroomBuilder">
+
+                  <label for="chatroom"><b>Chatroom</b></label>
+                  <input type="text" placeholder="Enter Chatroom" name="chatroom" autocomplete="off" maxlength="20" required>
+
+                  <select  name="option">
+                      <option value="add">Add</option>
+                      <option value="delete">Delete</option>
+                  </select>
+
+                  <input type="hidden" name="name" value=<%= request.getParameter("name")%>>
+                  <button type="submit">Submit</button>
+                </form>
             </div>
           </div>
+
+          <a class="help"><img class="help-img" src="Icons/info.png" alt=""></a>
 
         </div>
       </div>
@@ -61,6 +87,8 @@
           <div class="selection">
 
             <div class="projects">
+
+                
               <div class="project-obj">
                 <img class="projects-img" src="Icons/calendar-6.png" alt="">
                 Project

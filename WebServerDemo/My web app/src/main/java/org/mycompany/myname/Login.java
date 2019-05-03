@@ -17,11 +17,7 @@ public class Login extends HttpServlet {
         System.out.println("Login: " + name + ", " + pass);
 
         File file = new File(fileName);
-        if (file.createNewFile()) {
-            System.out.println("File is created!");
-        } else {
-            System.out.println("File already exists.");
-        }
+        file.createNewFile();
 
         BufferedReader reader = new BufferedReader(new FileReader(fileName));
         String line = null;
@@ -29,7 +25,6 @@ public class Login extends HttpServlet {
             if (line.equals(searchLine)) {
                 nextJSP = "/main.jsp";
                 System.out.println("Username Found");
-                reader.close();
                 break;
             }
         }

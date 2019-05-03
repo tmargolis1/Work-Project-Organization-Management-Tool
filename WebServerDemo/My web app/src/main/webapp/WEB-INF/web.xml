@@ -25,4 +25,24 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ProjectBuilder</servlet-name>
+        <servlet-class>org.mycompany.myname.ProjectBuilder</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ProjectBuilder</servlet-name>
+        <url-pattern>/project</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ChatroomBuilder</servlet-name>
+        <servlet-class>org.mycompany.myname.ChatroomBuilder</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ChatroomBuilder</servlet-name>
+        <url-pattern>/chatroom</url-pattern>
+    </servlet-mapping>
+
 </web-app>

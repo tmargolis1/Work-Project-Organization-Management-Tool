@@ -45,9 +45,6 @@
                    <label for="repass"><b>Confirm</b></label>
                    <input type="password" placeholder="Renter Password" name="repass" maxlength="20" required>
                    <button type="submit">Register</button>
-                   <label>
-                     <input type="checkbox" checked="checked" name="remember"> Remember me
-                   </label>
                  </form>
              </div>
              <!-- Validation -->
@@ -84,9 +81,6 @@
                     <label for="pass"><b>Password</b></label>
                     <input type="password" placeholder="Enter Password" name="pass" maxlength="20" required>
                     <button type="submit">Login</button>
-                    <label>
-                      <input type="checkbox" checked="checked" name="remember"> Remember me
-                    </label>
                   </form>
               </div>
               <!-- Validation -->

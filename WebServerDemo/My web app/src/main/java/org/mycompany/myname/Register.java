@@ -17,11 +17,7 @@ public class Register extends HttpServlet {
         System.out.println("Register: " + name + ", " + pass);
 
         File file = new File(fileName);
-        if (file.createNewFile()) {
-            System.out.println("File is created!");
-        } else {
-            System.out.println("File already exists.");
-        }
+        file.createNewFile();
 
         BufferedReader reader = new BufferedReader(new FileReader(fileName));
         String line = null;
@@ -30,7 +26,6 @@ public class Register extends HttpServlet {
             if (line.split(",")[0].equals(name)) {
                 nextJSP = "/index.jsp";
                 System.out.println("Username Taken");
-                reader.close();
                 found = true;
                 break;
             }

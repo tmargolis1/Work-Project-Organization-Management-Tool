@@ -2,3 +2,4 @@ org\mycompany\myname\ChatroomBuilder.class
 org\mycompany\myname\Login.class
 org\mycompany\myname\ProjectBuilder.class
 org\mycompany\myname\Register.class
+org\mycompany\myname\AddUser.class

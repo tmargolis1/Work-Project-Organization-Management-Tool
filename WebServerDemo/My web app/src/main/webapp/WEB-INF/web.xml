@@ -45,4 +45,14 @@
         <url-pattern>/chatroom</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>AddUser</servlet-name>
+        <servlet-class>org.mycompany.myname.AddUser</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AddUser</servlet-name>
+        <url-pattern>/addUser</url-pattern>
+    </servlet-mapping>
+
 </web-app>

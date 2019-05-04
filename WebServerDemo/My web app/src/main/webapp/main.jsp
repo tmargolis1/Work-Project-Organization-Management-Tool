@@ -10,6 +10,76 @@
     <script src="p5/addons/p5.sound.min.js"></script>
     <!-- <script src="LoginScreenBackground.js"></script> -->
     <link rel="stylesheet" href="MainScreenStyle.css">
+
+    <%@ page import ="java.util.*"%>
+    <%@ page import="java.io.*" %>
+    <%
+        String name = request.getParameter("name");
+        String currentProject = "";
+        String currentChatroom = "";
+        String temp = "";
+        ArrayList users = new ArrayList();
+        ArrayList projects = new ArrayList();
+        ArrayList chatrooms = new ArrayList();
+        System.out.println(name);
+
+        BufferedReader usersReader = new BufferedReader(new FileReader("DataUsers.csv"));
+        String line = null;
+        while ((line = usersReader.readLine()) != null) {
+            users.add(line.split(",")[0]);
+        }
+        usersReader.close();
+        BufferedReader projectsReader = new BufferedReader(new FileReader("DataProjects.csv"));
+        while ((line = projectsReader.readLine()) != null) {
+            if (currentProject.equals("")) {
+                currentProject = line.split(",")[0];
+            }
+            temp = "";
+            for (int i = 0; i < line.split(",").length; i++) temp += line.split(",")[i] + ",";
+            temp = temp.substring(0, temp.length() - 1);
+            projects.add(temp);
+        }
+        projectsReader.close();
+        BufferedReader chatroomsReader = new BufferedReader(new FileReader("DataChatrooms.csv"));
+        while ((line = chatroomsReader.readLine()) != null) {
+            if (currentChatroom.equals("")) {
+                currentChatroom = line.split(",")[0];
+            }
+            temp = "";
+            for (int i = 0; i < line.split(",").length; i++) temp += line.split(",")[i] + ",";
+            temp = temp.substring(0, temp.length() - 1);
+            chatrooms.add(temp);
+        }
+        chatroomsReader.close();
+
+        System.out.println(users);
+        System.out.println(projects);
+        System.out.println(chatrooms);
+    %>
+
+    <script>
+      var currentProject = "";
+      var projectsArray = new Array();
+      var currentChatroom = "";
+      var chatroomsArray = new Array();
+
+      window.onload = function() {
+        var currentProject = "<%= currentProject %>";
+        <%
+        for (int i=0; i < projects.size(); i++) {
+        %>
+        projectsArray[<%= i %>] = "<%= projects.get(i) %>";
+        <%}%>
+        var currentChatroom = "<%= currentChatroom %>";
+        <%
+        for (int i=0; i < chatrooms.size(); i++) {
+        %>
+        chatroomsArray[<%= i %>] = "<%= chatrooms.get(i) %>";
+        <%}%>
+        setProject(0);
+      }
+  </script>
+
   </head>
   <body>
 
@@ -26,16 +96,14 @@
 
         <div class="header-right">
 
-          <div class="project-title">
-            Project Title
-          </div>
+          <div class="project-title"></div>
 
           <div class="dropdown">
             <button class="dropbtn">
               <img class="login-img" src="Icons/user-3.png" alt="">
             </button>
             <div class="dropdown-content">
-              <label for="username"><b>Username</b></label>
+              <label for="username"><b><%= name %></b></label>
               <button class="logout-button" onclick="location.href='index.jsp'">Logout</button>
             </div>
           </div>
@@ -55,7 +123,7 @@
                       <option value="delete">Delete</option>
                   </select>
 
-                  <input type="hidden" name="name" value=<%= request.getParameter("name")%>>
+                  <input type="hidden" name="name" value=<%= name %>>
                   <button type="submit">Submit</button>
                 </form>
                 <form action="chatroom" name="ChatroomBuilder">
@@ -68,7 +136,7 @@
                       <option value="delete">Delete</option>
                   </select>
 
-                  <input type="hidden" name="name" value=<%= request.getParameter("name")%>>
+                  <input type="hidden" name="name" value=<%= name %>>
                   <button type="submit">Submit</button>
                 </form>
             </div>
@@ -87,35 +155,89 @@
           <div class="selection">
 
             <div class="projects">
-
-                
-              <div class="project-obj">
-                <img class="projects-img" src="Icons/calendar-6.png" alt="">
-                Project
-              </div>
-              <div class="project-obj">
-                <img class="projects-img" src="Icons/calendar-6.png" alt="">
-                Project
-              </div>
-              <div class="project-obj">
-                <img class="projects-img" src="Icons/calendar-6.png" alt="">
-                Project
-              </div>
+                <%
+                    Iterator<String> itProject = projects.iterator();
+                    int index = 0;
+                    while (itProject.hasNext()) {
+                        String project = itProject.next();
+                        if(project.split(",")[1].equals(name)) {
+                        %>
+                            <div class="project-obj:<%= index %>" onclick="setProject(<%= index %>)">
+                                <img class="projects-img" src="Icons/calendar-6.png" alt="">
+                                <label for="project-name"><b><%= project.split(",")[0] %></b></label>
+                                <form action="addUser" name="ProjectBuilder">
+                                    <label for="Users"><b>Select User</b></label>
+                                    <select name="user">
+                                        <%
+                                            Iterator<String> itUsers = users.iterator();
+                                            while (itUsers.hasNext()) {
+                                                String user = itUsers.next();
+                                                %>
+                                                    <option value="<%= user.split(",")[0] %>"><%= user.split(",")[0] %></option>
+                                                <%
+                                            }
+                                        %>
+                                    <select>
+                                    <select  name="option">
+                                      <option value="add">Add</option>
+                                      <option value="delete">Delete</option>
+                                  </select>
+                                    <input type="hidden" name="name" value=<%= name %>>
+                                    <input type="hidden" name="project" value=<%= project.split(",")[0] %>>
+                                    <button type="submit">Submit</button>
+                                </form>
+                            </div>
+                        <%
+                            index++;
+                        }
+                    }
+                %>
+                <script>
+                    function setProject(index) {
+                        var title = document.getElementsByClassName("project-title");
+                        title[0].innerHTML = projectsArray[index].split(",")[0];
+                    }
+                </script>
             </div>
 
             <div class="chatrooms">
-              <div class="chatroom-obj">
-                <img class="chatrooms-img" src="Icons/smartphone-10.png" alt="">
-                Chatroom
-              </div>
-              <div class="chatroom-obj">
-                <img class="chatrooms-img" src="Icons/smartphone-10.png" alt="">
-                Chatroom
-              </div>
-              <div class="chatroom-obj">
-                <img class="chatrooms-img" src="Icons/smartphone-10.png" alt="">
-                Chatroom
-              </div>
+                <%
+                    Iterator<String> itChatroom = chatrooms.iterator();
+                    index = 0;
+                    while (itChatroom.hasNext()) {
+                        String chatroom = itChatroom.next();
+                        if(chatroom.split(",")[1].equals(name)) {
+                        %>
+                            <div class="chatroom-obj:<%= index %>">
+                                <img class="chatrooms-img" src="Icons/smartphone-10.png" alt="">
+                                <label for="chatroom-name"><b><%= chatroom.split(",")[0] %></b></label>
+                                <form action="addUser" name="ProjectBuilder">
+                                    <label for="Users"><b>Select User</b></label>
+                                    <select name="user">
+                                        <%
+                                            Iterator<String> itUsers = users.iterator();
+                                            while (itUsers.hasNext()) {
+                                                String user = itUsers.next();
+                                                %>
+                                                    <option value="<%= user.split(",")[0] %>"><%= user.split(",")[0] %></option>
+                                                <%
+                                            }
+                                        %>
+                                    <select>
+                                    <select  name="option">
+                                      <option value="add">Add</option>
+                                      <option value="delete">Delete</option>
+                                  </select>
+                                    <input type="hidden" name="name" value=<%= name %>>
+                                    <input type="hidden" name="chatroom" value=<%= chatroom.split(",")[0] %>>
+                                    <button type="submit">Submit</button>
+                                </form>
+                            </div>
+                        <%
+                            index++;
+                        }
+                    }
+                %>
             </div>
 
             <div class="button-box">

@@ -10,47 +10,85 @@
     <link rel="stylesheet" href="Schedule_Style.css">
   <title>ProjectSchedulerHTML</title>
   <meta charset = "UTF-8" /
-</head>
+  
+  <!-- AddEvent script -->
+  <script type="text/javascript" src="https://addevent.com/libs/atc/1.6.1/atc.min.js" async defer></script>
+
 
 <div class="container">
 <div class="split left">
 
-<script src="https://apis.google.com/js/api.js"></script>
-<script>
-function start() {
-  // 2. Initialize the JavaScript client library.
-  gapi.client.init({
-    'apiKey': 'sfq6wRp5r36_yREKCUIwd7-_',
-    // Your API key will be automatically added to the Discovery Document URLs.
-    'discoveryDocs': ['https://people.googleapis.com/$discovery/rest'],
-    // clientId and scope are optional if auth is not required.
-    'clientId': '198865806308-frbhjtt9tkosupeltatnu3g6g1ah5dfo.apps.googleusercontent.com',
-    'scope': 'profile',
-  }).then(function() {
-    // 3. Initialize and make the API request.
-    return gapi.client.people.people.get({
-      'resourceName': 'people/me',
-      'requestMask.includeField': 'person.names'
-    });
-  }).then(function(response) {
-    console.log(response.result);
-  }, function(reason) {
-    console.log('Error: ' + reason.result.error.message);
-  });
-};
-// 1. Load the JavaScript client library.
-gapi.load('client', start);
+  <title>Project Planner</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="includes/shadowbox-3.0.3/shadowbox.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="includes/jquery-minicolors/jquery.miniColors.css" />
+	
+	<!--[if lt IE 9]>
+        <script src="HTML5Shiv/html5.js"></script>
+        
+        <style type="text/css">
+            .ui-draggable-dragging {
+                filter: alpha(opacity=50);
+                filter: progid:DXImageTransform.Microsoft.Alpha(opacity=50);
+            }
+            
+            #agenda tbody span.ui-selecting {
+                background: #569DE8;
+                border-top: 1px solid #569DE8;
+            }
+            
+            #topMask {
+                position: absolute;
+                
+                background: #DDD;
+                
+                z-index: 10;
+                
+                filter: alpha(opacity=60);
+                filter: progid:DXImageTransform.Microsoft.Alpha(opacity=60);
+            }
+            
+            #bottomMask {
+                position: absolute;
+                
+                background: #DDD;
+                
+                z-index: 10;
+                
+                filter: alpha(opacity=60);
+                filter: progid:DXImageTransform.Microsoft.Alpha(opacity=60);
+            }
+            
+            #leftMask {
+                position: absolute;
+                
+                width: 0px;
+                
+                background: #DDD;
+                
+                z-index: 10;
+                
+                filter: alpha(opacity=60);
+                filter: progid:DXImageTransform.Microsoft.Alpha(opacity=60);
+            }
 
-var fetch = require("node-fetch"); // or fetch() is native in browsers
-fetch("https://www.googleapis.com/calendar/v3/users/me/settings", {
-  method: "get",
-  headers: {
-    Authorization: "Bearer ACCESS_TOKEN"
-  }
-})
-  .then(res => res.json())
-  .then(json => console.log(json));
-</script>
+            #rightMask {
+                position: absolute;
+                
+                width: 0px;
+                
+                background: #DDD;
+                
+                z-index: 10;
+                
+                filter: alpha(opacity=60);
+                filter: progid:DXImageTransform.Microsoft.Alpha(opacity=60);
+            }
+        </style>
+    <![endif]-->
+  
+</head>
 
 <body>
   <h1>Project Scheduler</h1>
@@ -92,73 +130,191 @@ fetch("https://www.googleapis.com/calendar/v3/users/me/settings", {
 
         </div>
       </div>
+	</h1>
+		  <!-- Body -->
+		  <div id="Body">
+			
+			<div class="side-panel">
 
-      <!-- Body -->
-      <div id="Body">
-        
-        <div class="side-panel">
+			  <div class="selection">
 
-          <div class="selection">
+				<div class="projects">
+				  <div class="project">
+					<img class="projects-img" src="Resources/Icons/calendar-6.png" alt="">
+					Project
+				  </div>
+				  <div class="project">
+					<img class="projects-img" src="Resources/Icons/calendar-6.png" alt="">
+					Project
+				  </div>
+				  <div class="project">
+					<img class="projects-img" src="Resources/Icons/calendar-6.png" alt="">
+					Project
+				  </div>
+				</div>
 
-            <div class="projects">
-              <div class="project">
-                <img class="projects-img" src="Resources/Icons/calendar-6.png" alt="">
-                Project
-              </div>
-              <div class="project">
-                <img class="projects-img" src="Resources/Icons/calendar-6.png" alt="">
-                Project
-              </div>
-              <div class="project">
-                <img class="projects-img" src="Resources/Icons/calendar-6.png" alt="">
-                Project
-              </div>
-            </div>
+				<div class="chatrooms">
+				  <div class="chatroom">
+					<img class="chatrooms-img" src="Resources/Icons/smartphone-10.png" alt="">
+					Chatroom
+				  </div>
+				  <div class="chatroom">
+					<img class="chatrooms-img" src="Resources/Icons/smartphone-10.png" alt="">
+					Chatroom
+				  </div>
+				  <div class="chatroom">
+					<img class="chatrooms-img" src="Resources/Icons/smartphone-10.png" alt="">
+					Chatroom
+				  </div>
+				</div>
 
-            <div class="chatrooms">
-              <div class="chatroom">
-                <img class="chatrooms-img" src="Resources/Icons/smartphone-10.png" alt="">
-                Chatroom
-              </div>
-              <div class="chatroom">
-                <img class="chatrooms-img" src="Resources/Icons/smartphone-10.png" alt="">
-                Chatroom
-              </div>
-              <div class="chatroom">
-                <img class="chatrooms-img" src="Resources/Icons/smartphone-10.png" alt="">
-                Chatroom
-              </div>
-            </div>
+				<div class="button-box">
+				  <button class="projects-button">
+					  <img class="projects-img" src="Resources/Icons/calendar-6.png" alt="">
+				  </button>
+				  <button class="chatrooms-button">
+					  <img class="chatrooms-img" src="Resources/Icons/smartphone-10.png" alt="">
+				  </button>
+				</div>
+			  
+			  </div>
 
-            <div class="button-box">
-              <button class="projects-button">
-                  <img class="projects-img" src="Resources/Icons/calendar-6.png" alt="">
-              </button>
-              <button class="chatrooms-button">
-                  <img class="chatrooms-img" src="Resources/Icons/smartphone-10.png" alt="">
-              </button>
-            </div>
-          
-          </div>
+			  <div class="collapse">
+				<div class="collapse-icon">
 
-          <div class="collapse">
-            <div class="collapse-icon">
+				</div>
+				<button class="collapse-button">
+					<img class="collapse-img" src="Resources/Icons/play-button-1.png" alt="">
+				</button>
+			  </div>
+			</div>
 
-            </div>
-            <button class="collapse-button">
-                <img class="collapse-img" src="Resources/Icons/play-button-1.png" alt="">
-            </button>
-          </div>
-        </div>
+	<div id="container" style="margin:50px 0px 0px 100px;">
+			<div id="miniMonthCalendarContainer">
+				<h3 style="margin:0px 0px 15px 30px; color:#327CCB; font-size:14px;">Fast day chooser</h3>
+				<div id="monthManagement">
+					<input type="button" id="prevYear" name="prevYear" value="&laquo;" title="Previous year" />
+					<input type="button" id="prevMonth" name="prevMonth" value="&lt;" title="Previous month" />
+					<span id="currentMonth"></span>
+					<input type="button" id="nextMonth" name="prevMonth" value="&gt;" title="Next month" />
+					<input type="button" id="nextYear" name="nextYear" value="&raquo;" title="Next year" />
+				</div>
+				<table id="miniMonthCalendar">
+				</table>
+			</div>
+			<div id="nav">
+				<input type="button" id="nav_previous" name="nav_previous" value="&lt;" title="Previous week" />
+				<input type="button" id="nav_next" name="nav_next" value="&gt;" title="Next week" />
+			</div>
+			<table id="hoursList"></table>
+			<div id="limitsChoice"></div>
+			<table id="agenda">
+				<thead>
+					<tr>
+						<!-- Days name -->
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<!-- TD of each days -->
+					</tr>
+					<div id="topMask"></div>
+					<div id="bottomMask"></div>
+					<div id="leftMask"></div>
+					<div id="rightMask"></div>
+				</tbody>
+			</table>
+			<div id="limitsChoiceHorizontal"></div>
+			<div id="fixResize"></div>
+		</div>
+		
+		<form id="formCreationEvt" style="display:none;">
+			<table>
+				<tbody>
+					<tr>
+						<td><label for="name">Name</label></td>
+					</tr>
+					<tr>
+						<td><input type="text" id="name" name="name" class="field" /></td>
+					</tr>
+					<tr>
+						<td><label for="desc">Description</label></td>
+					</tr>
+					<tr>
+						<td><textarea id="desc" name="desc" class="field" rows="2"></textarea></td>
+					</tr>
+					<tr>
+						<td><label for="color">Color</label></td>
+					</tr>
+					<tr>
+						<td><input id="colorChoose" type="text" class="color-picker field" value="#327CCB" style="width:60px; text-align:center;" /></td>
+					</tr>
+					<tr>
+						<td style="text-align:center;">
+							<input type="button" id="cancelCreationEvt" class="validate" value="CANCEL" />
+							<input type="button" id="valCreationEvt" class="validate" value="OK" />
+						</td>
+					</tr>
+					<tr>
+						<td style="text-align:center;">
+							<input type="button" id="delCreationEvt" class="validate" value="DELETE" style="width:303px;" disabled />
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+		
+		<script type='text/javascript' src='includes/jquery-1.7.1.min.js'></script>
+		<script type='text/javascript' src='includes/jquery-ui-1.8.17.custom.js'></script>
+		<script type='text/javascript' src='includes/jquery.ui.core.min.js'></script>
+		<script type='text/javascript' src='includes/jquery.ui.widget.min.js'></script>
+		<script type='text/javascript' src='includes/jquery.ui.mouse.min.js'></script>
+		<script type='text/javascript' src='includes/jquery.ui.position.min.js'></script>
+		<script type='text/javascript' src='includes/jquery.ui.draggable.min.js'></script>
+		<script type='text/javascript' src='includes/jquery.ui.resizable.min.js'></script>
+		<script type='text/javascript' src='includes/jquery.ui.selectable.min.js'></script>
+		<script type='text/javascript' src='includes/jquery.ui.droppable.min.js'></script>
+		<script type='text/javascript' src='includes/jquery.ui.slider.min.js'></script>
+		<script type='text/javascript' src='includes/jquery.ui.dialog.min.js'></script>
 
-        <div class="calendar">
-          Something
-        </div>
+		<!-- SHADOWBOX -->
+		<script type='text/javascript' src='includes/shadowbox-3.0.3/shadowbox.js'></script>
+		
+		<!-- JQUERY - MINICOLORS -->
+		<script type='text/javascript' src='includes/jquery-minicolors/jquery.miniColors.min.js'></script>
+		
+		<!-- DATES MANAGEMENT -->
+		<script type='text/javascript' src='includes/date.js'></script>
+		
+		<script type='text/javascript' src='scheduler.js'></script>
+		<script type="text/javascript">
+			//<![CDATA[
+			$(document).ready(function() {
 
-        <div class="chatroom">
-          Something
-        </div>
-  <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=tmargolis%40ltu.edu&amp;color=%231B887A&amp;ctz=America%2FNew_York" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+				// Example of good values for cells
+				var CELL_WIDTH_LITTLE = 100, CELL_WIDTH_MEDIUM = 150, CELL_WIDTH_LARGE = 200;
+				var CELL_HEIGHT_LITTLE = 7, CELL_HEIGHT_MEDIUM = 9, CELL_HEIGHT_LARGE = 15;
+				
+				/*
+					Default values
+					--------------
+				
+				hour_mask:		new Array(8, 20),
+				day_mask:		new Array(1, 7),
+				cell_width:		150,
+				cell_height:	9
+				*/
+				
+				$agenda = $(document).scheduler({
+				
+				});
+				
+				// Call $agenda.redraw(); when the calendar's coordinates change (because events and masks have absolute position at this time)
+
+			});
+			//]]>
+		</script>
+	</div>
 </body>
 
 </html>

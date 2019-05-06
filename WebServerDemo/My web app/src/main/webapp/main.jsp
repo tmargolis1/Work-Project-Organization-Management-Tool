@@ -162,10 +162,10 @@
                         String project = itProject.next();
                         if(project.split(",")[1].equals(name)) {
                         %>
-                            <div class="project-obj:<%= index %>" onclick="setProject(<%= index %>)">
+                            <div class="select-obj" id="project<%= index %>" onclick="setProject(<%= index %>)">
                                 <img class="projects-img" src="Icons/calendar-6.png" alt="">
                                 <label for="project-name"><b><%= project.split(",")[0] %></b></label>
-                                <form action="addUser" name="ProjectBuilder">
+                                <form action="addUser" class="select-form" name="ProjectBuilder">
                                     <label for="Users"><b>Select User</b></label>
                                     <select name="user">
                                         <%
@@ -208,10 +208,10 @@
                         String chatroom = itChatroom.next();
                         if(chatroom.split(",")[1].equals(name)) {
                         %>
-                            <div class="chatroom-obj:<%= index %>">
+                            <div class="select-obj" id="chatroom<%= index %>">
                                 <img class="chatrooms-img" src="Icons/smartphone-10.png" alt="">
                                 <label for="chatroom-name"><b><%= chatroom.split(",")[0] %></b></label>
-                                <form action="addUser" name="ProjectBuilder">
+                                <form action="addUser" class="select-form" name="ProjectBuilder">
                                     <label for="Users"><b>Select User</b></label>
                                     <select name="user">
                                         <%

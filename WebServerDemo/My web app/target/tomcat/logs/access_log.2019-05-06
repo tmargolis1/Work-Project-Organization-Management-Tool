@@ -1,0 +1,9 @@
+0:0:0:0:0:0:0:1 - - [06/May/2019:10:22:52 -0400] "GET / HTTP/1.1" 200 8331 http-bio-8888-exec-2 2788
+0:0:0:0:0:0:0:1 - - [06/May/2019:10:22:52 -0400] "GET /LoginScreenStyle.css HTTP/1.1" 304 - http-bio-8888-exec-1 40
+0:0:0:0:0:0:0:1 - - [06/May/2019:10:22:52 -0400] "GET /LoginScreenBackground.js HTTP/1.1" 304 - http-bio-8888-exec-3 44
+0:0:0:0:0:0:0:1 - - [06/May/2019:10:22:53 -0400] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-8888-exec-5 3
+0:0:0:0:0:0:0:1 - - [06/May/2019:10:23:01 -0400] "GET /login?name=Nick&pass=123 HTTP/1.1" 200 13786 http-bio-8888-exec-6 850
+0:0:0:0:0:0:0:1 - - [06/May/2019:10:23:01 -0400] "GET /MainScreenStyle.css HTTP/1.1" 304 - http-bio-8888-exec-7 5
+0:0:0:0:0:0:0:1 - - [06/May/2019:10:23:09 -0400] "GET /index.jsp HTTP/1.1" 200 8331 http-bio-8888-exec-8 3
+0:0:0:0:0:0:0:1 - - [06/May/2019:10:23:15 -0400] "GET /login?name=Nick&pass=123 HTTP/1.1" 200 13786 http-bio-8888-exec-9 6
+0:0:0:0:0:0:0:1 - - [06/May/2019:10:23:25 -0400] "GET /addUser?user=Jeff&option=add&name=Nick&project=Econ HTTP/1.1" 200 13791 http-bio-8888-exec-10 28

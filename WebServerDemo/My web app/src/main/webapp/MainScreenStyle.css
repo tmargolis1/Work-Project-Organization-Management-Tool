@@ -26,7 +26,7 @@ body {
     background-color: #373737;
     height: 50px;
     width: 100%;
-    border-bottom: 4px solid black;
+    border-bottom: 2px solid black;
   }
 
   #Header a {
@@ -209,25 +209,43 @@ body {
     }
 
     .projects {
-      overflow: scroll;
+      overflow-x: hidden;
       display: block;
-      height: calc(88% - 4px);
+      height: calc(89% - 4px);
     }
-
-    .projects div {
-      margin: auto;
-      padding: 5px;
-    }
-
     .chatrooms {
-      overflow: scroll;
+      overflow-x: hidden;
       display: none;
-      height: calc(88% - 4px);
+      height: calc(89% - 4px);
     }
 
-    .chatrooms div {
-      margin: auto;
+    .select-obj {
+      background: #373737;
+      margin: 2px;
       padding: 5px;
+    }
+
+    .select-obj label{
+      width: 80%;
+      font-size: 15px;
+      float: right;
+    }
+
+    .select-form {
+        display: none;
+        background: #373737;
+        margin: 2px;
+        padding: 5px;
+    }
+
+    .select-form select{
+        display: inline-block;
+        width: 100%;
+    }
+
+    .select-obj:hover .select-form {
+        background: lightgray;
+        display: block;
     }
 
     .selection .button-box {

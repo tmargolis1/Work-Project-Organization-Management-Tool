@@ -31,7 +31,7 @@
         usersReader.close();
         BufferedReader projectsReader = new BufferedReader(new FileReader("DataProjects.csv"));
         while ((line = projectsReader.readLine()) != null) {
-            if (currentProject.equals("")) {
+            if (currentProject.equals("") && line.split(",")[1].equals(name)) {
                 currentProject = line.split(",")[0];
             }
             temp = "";
@@ -76,7 +76,6 @@
         %>
         chatroomsArray[<%= i %>] = "<%= chatrooms.get(i) %>";
         <%}%>
-        setProject(0);
       }
   </script>
 
@@ -113,7 +112,7 @@
               <img class="add-project-img" src="Icons/plus.png" alt="">
             </button>
             <div class="dropdown-content">
-                <form action="project" name="ProjectBuilder">
+                <form action="project" name="ProjectBuilder" onsubmit="return validateProjectForm()">
 
                   <label for="project"><b>Project</b></label>
                   <input type="text" placeholder="Enter Project" name="project" autocomplete="off" maxlength="20" required>
@@ -126,7 +125,7 @@
                   <input type="hidden" name="name" value=<%= name %>>
                   <button type="submit">Submit</button>
                 </form>
-                <form action="chatroom" name="ChatroomBuilder">
+                <form action="chatroom" name="ChatroomBuilder" onsubmit="return validateChatroomForm()">
 
                   <label for="chatroom"><b>Chatroom</b></label>
                   <input type="text" placeholder="Enter Chatroom" name="chatroom" autocomplete="off" maxlength="20" required>
@@ -139,6 +138,24 @@
                   <input type="hidden" name="name" value=<%= name %>>
                   <button type="submit">Submit</button>
                 </form>
+                <script>
+                    function validateProjectForm() {
+                      var projectName = document.forms["ProjectBuilder"]["project"].value;
+                      console.log(projectName);
+                      if (projectName.includes(",") || projectName.includes("\n")) {
+                        alert("Invalid Project Name");
+                        return false;
+                      }
+                    }
+                    function validateChatroomForm() {
+                      var chatroomName = document.forms["ChatroomBuilder"]["chatroom"].value;
+                      console.log(chatroomName);
+                      if (chatroomName.includes(",") || chatroomName.includes("\n")) {
+                        alert("Invalid Project Name");
+                        return false;
+                      }
+                    }
+                </script>
             </div>
           </div>
 
@@ -158,9 +175,17 @@
                 <%
                     Iterator<String> itProject = projects.iterator();
                     int index = 0;
+                    boolean found = false;
                     while (itProject.hasNext()) {
                         String project = itProject.next();
-                        if(project.split(",")[1].equals(name)) {
+                        found = false;
+                        for (int i = 1; i < project.split(",").length; i++) {
+                            if (project.split(",")[i].equals(name)) {
+                                found = true;
+                                break;
+                            }
+                        }
+                        if (found) {
                         %>
                             <div class="select-obj" id="project<%= index %>" onclick="setProject(<%= index %>)">
                                 <img class="projects-img" src="Icons/calendar-6.png" alt="">
@@ -188,8 +213,8 @@
                                 </form>
                             </div>
                         <%
-                            index++;
                         }
+                        index++;
                     }
                 %>
                 <script>
@@ -206,7 +231,14 @@
                     index = 0;
                     while (itChatroom.hasNext()) {
                         String chatroom = itChatroom.next();
-                        if(chatroom.split(",")[1].equals(name)) {
+                        found = false;
+                        for (int i = 1; i < chatroom.split(",").length; i++) {
+                            if (chatroom.split(",")[i].equals(name)) {
+                                found = true;
+                                break;
+                            }
+                        }
+                        if (found) {
                         %>
                             <div class="select-obj" id="chatroom<%= index %>">
                                 <img class="chatrooms-img" src="Icons/smartphone-10.png" alt="">

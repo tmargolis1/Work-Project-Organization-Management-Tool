@@ -1,0 +1,10 @@
+0:0:0:0:0:0:0:1 - - [08/May/2019:15:22:49 -0400] "GET / HTTP/1.1" 200 8331 http-bio-8888-exec-2 1093
+0:0:0:0:0:0:0:1 - - [08/May/2019:15:22:54 -0400] "GET /login?name=Nick&pass=123 HTTP/1.1" 200 16735 http-bio-8888-exec-3 596
+0:0:0:0:0:0:0:1 - - [08/May/2019:15:23:35 -0400] "GET /login?name=Nick&pass=123 HTTP/1.1" 200 16081 http-bio-8888-exec-4 4
+0:0:0:0:0:0:0:1 - - [08/May/2019:15:23:51 -0400] "GET /addUser?user=Jeff&option=add&name=Nick&project=Data HTTP/1.1" 200 16086 http-bio-8888-exec-6 57
+0:0:0:0:0:0:0:1 - - [08/May/2019:15:24:23 -0400] "GET /chatroom?chatroom=Something&option=add&name=Nick HTTP/1.1" 200 18029 http-bio-8888-exec-8 17
+0:0:0:0:0:0:0:1 - - [08/May/2019:15:24:35 -0400] "GET /addUser?user=Jeff&option=add&name=Nick&chatroom=Something HTTP/1.1" 200 18034 http-bio-8888-exec-10 17
+0:0:0:0:0:0:0:1 - - [08/May/2019:15:24:37 -0400] "GET /index.jsp HTTP/1.1" 200 8331 http-bio-8888-exec-10 2
+0:0:0:0:0:0:0:1 - - [08/May/2019:15:24:47 -0400] "GET /login?name=Jeff&pass=123 HTTP/1.1" 200 19905 http-bio-8888-exec-10 6
+0:0:0:0:0:0:0:1 - - [08/May/2019:15:25:05 -0400] "GET /addUser?user=Jeff&option=delete&name=Jeff&project=Data HTTP/1.1" 200 19905 http-bio-8888-exec-4 13
+0:0:0:0:0:0:0:1 - - [08/May/2019:15:25:42 -0400] "GET /index.jsp HTTP/1.1" 200 8331 http-bio-8888-exec-8 6

@@ -27,6 +27,7 @@ public class AddUser extends HttpServlet {
 
         System.out.println(project);
         System.out.println(chatroom);
+        System.out.println(name);
 
         File file = new File(fileName);
         File tempFile = new File("tempAdd.csv");
@@ -40,10 +41,9 @@ public class AddUser extends HttpServlet {
         String line = null;
         boolean found = false;
         while ((line = reader.readLine()) != null) {
-            if (line.split(",")[0].equals(project)
-                    || line.split(",")[0].equals(chatroom)
+            if ((line.split(",")[0].equals(project)
+                    || line.split(",")[0].equals(chatroom))
                     && line.split(",")[1].equals(name)) {
-
                 String newLine = line.split(",")[0] + ","
                         + line.split(",")[1] + ",";
                 for (int i = 2; i < line.split(",").length; i++) {
